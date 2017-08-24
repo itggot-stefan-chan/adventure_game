@@ -10,9 +10,10 @@ def init():
 
 def adventure():
     while True:
-        read = input()
+        read = raw_input()
         if read == 'move(left)':
             player.player1.move('left')
+            print ('You have successfully moved to the place left of you')
         elif read == 'move(right)':
             player.player1.move('right')
         elif read == 'look':

@@ -13,19 +13,23 @@ class player1:
     def move(self, direction):
         if direction == 'right':
             places = getPlace('name')
-            if player1.place == places[-1]:
+            if player1.place == places[-1].replace(",",""):
                 world.generatePlace()
             player1.place = chr(ord(player1.place) + 1)
         elif direction == 'left':
             places = getPlace('name')
-            if player1.place != places[0]:
-                # world.generatePlace()
-                player1.place = chr(ord(player1.place) - 1)
+            if player1.place == places[0].replace(",",""):
+                world.generatePlace()
+            player1.place = chr(ord(player1.place) - 1)
 
     def look(self):
+        self.data = []
         print('You are in place ' + str(player1.place))
         print('The place right of you is ' + (chr(ord(player1.place) + 1)))
-        print('The place left of you is ' + (chr(ord(player1.place) - 1)))
+        if player1.place == 'a':
+            print ('There is no place left of you')
+        else:
+            print('The place left of you is ' + (chr(ord(player1.place) - 1)))
         player1.add_data(getPlace('enviroment'))
         player1.add_data(getPlace('weather'))
         player1.add_data(getPlace('object'))
@@ -51,3 +55,4 @@ def getPlace(attribute):
     return attributes
 
 player1 = player1('1')
+
