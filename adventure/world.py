@@ -3,7 +3,7 @@ import random
 class Places:
     enviroment = ['Desert', 'Jungle', 'Mountain', 'Urban']
     weather = ['Raining', 'Snowing', 'Sunny']
-    object = ['Buildings', 'People', 'River', 'Tree']
+    object = ['Buildings', 'People', 'River', 'Tree', 'Coin']
 
     def __init__(self, name):
         self.name = name
@@ -23,6 +23,10 @@ def generatePlace():
     name.add_attribute(Places.weather[random.randint(0,len(Places.weather) - 1)])
     name.add_attribute(Places.object[random.randint(0,len(Places.object) - 1)])
     writePlace(name.name, name.attributes[0], name.attributes[1], name.attributes[2])
+
+def wipe_places():
+    file_object = open('places.txt', 'w')
+    file_object.write("")
 
 def writePlace(name, enviroment, weather, object):
     file_object = open('places.txt', 'a')

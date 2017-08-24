@@ -6,9 +6,13 @@ class player1:
         self.actions = ['Look', 'Move']
         self.place = 'a'
         self.data = []
+        self.inventory = []
 
     def add_data(self, data):
         self.data.append(data)
+
+    def add_inventory(self, item):
+        self.inventory.append(item)
 
     def move(self, direction):
         if direction == 'right':
@@ -16,11 +20,13 @@ class player1:
             if player1.place == places[-1].replace(",",""):
                 world.generatePlace()
             player1.place = chr(ord(player1.place) + 1)
+            print ('You have successfully moved to the place right of you')
         elif direction == 'left':
-            places = getPlace('name')
-            if player1.place == places[0].replace(",",""):
-                world.generatePlace()
-            player1.place = chr(ord(player1.place) - 1)
+            if player1.place != 'a':
+                player1.place = chr(ord(player1.place) - 1)
+                print 'You have successfully moved to the place left of you'
+            elif player1.place == 'a':
+                print 'There is no place to move to, sorry'
 
     def look(self):
         self.data = []
@@ -34,6 +40,13 @@ class player1:
         player1.add_data(getPlace('weather'))
         player1.add_data(getPlace('object'))
         print(str(player1.data[0]).replace(",","")+" "+str(player1.data[1]).replace(",","")+" "+str(player1.data[2]))
+
+    def pick_up(self):
+        if getPlace('object') == ['Coin']:
+            player1.add_inventory(getPlace('object'))
+            print ('You have picked up a coin')
+        else:
+            print 'You can not pick up that object'
 
 def getPlace(attribute):
     files = open('places.txt', 'r')

@@ -1,7 +1,4 @@
-
-a, Mountain, Snowing, People
-b, Urban, Snowing, Buildings
-c, Urban, Raining, River
-d, Jungle, Raining, People
-e, Mountain, Sunny, People
-f, Urban, Raining, Buildings
+a, Mountain, Sunny, Coin
+b, Desert, Raining, Buildings
+c, Mountain, Sunny, River
+d, Mountain, Raining, Coin
